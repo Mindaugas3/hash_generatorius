@@ -34,10 +34,10 @@ Converter::Converter(string str) {
         out += hash;
 
         hash ^= (hash >> 4) + item;
-        hash += (hash << 5);
-        hash -= SEED;
+        hash += (hash << 5) + hash;
+        hash += (SEED << 5);
         hash += (hash << 3) + (item >> 4);
-        hash *= (hash >> 5) + SEED;
+        hash *= (hash >> 5) + SEED + hash;
         hash ^= ((hash >> 3) ^ SEED);
         out += hash;
 

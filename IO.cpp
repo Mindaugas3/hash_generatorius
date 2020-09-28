@@ -13,7 +13,7 @@ IO::IO(){
     std::string readKey = "R";
 
 
-    std::cout << "Kad nuskaityti iš failo, įveskite " + fileKey + ". Kad nuskaityti ranka įveskite " + readKey + ". \n";
+    std::cout << "Kad nuskaityti is failo, iveskite " + fileKey + ". Kad nuskaityti ranka iveskite " + readKey + ". \n";
 
     char response = std::cin.get();
 
@@ -86,7 +86,7 @@ std::string IO::ReadScreen(){
 }
 
 void IO::Output(std::string string) {
-    std::cout << "Sugeneruotas hash kodas: " << this->output << std::endl;
+    std::cout << "Sugeneruotas hash kodas: " << string << std::endl;
 }
 
 std::string IO::getInput() {

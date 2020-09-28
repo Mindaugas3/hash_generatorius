@@ -4,7 +4,7 @@
 
 int main() {
 
-    std::setlocale(LC_ALL, "lt_LT.UTF-8");
+//    std::setlocale(LC_ALL, "lt_LT.UTF-8");
 
 
     IO io = IO();
