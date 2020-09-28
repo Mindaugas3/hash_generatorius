@@ -81,9 +81,17 @@ std::string IO::ReadScreen(){
     std::cout << "Iveskite teksta kuri norite paversti i hasha \n";
     std::string x;
     std::cin >> x;
+    this->input = x;
     return x;
 }
 
-std::string IO::Output(){
-    return this->output;
+void IO::Output(std::string string) {
+    std::cout << "Sugeneruotas hash kodas: " << this->output << std::endl;
 }
+
+std::string IO::getInput() {
+    if(input.length() > 0) return input;
+    else return "";
+}
+
+

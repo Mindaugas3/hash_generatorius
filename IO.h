@@ -16,10 +16,9 @@ class IO {
         IO();
         std::string ReadScreen();
         void ReadFile();
-        std::string Output();
+        void Output(std::string string);
         bool CheckResponse(char a, char b, char response);
-
-    void ReadFile(std::string filename);
+        std::string getInput();
 };
 
 

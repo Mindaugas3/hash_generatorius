@@ -5,6 +5,7 @@
 
 #ifndef DEFAULT_HASH_LENGTH
 #define DEFAULT_HASH_LENGTH 12
+#define SEED 127
 
 #include <string>
 
@@ -17,7 +18,7 @@ private:
 
 public:
     Converter(string in);
-    void getOutput();
+    string getOutput();
 
 };
 
