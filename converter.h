@@ -6,10 +6,14 @@
 #ifndef DEFAULT_HASH_LENGTH
 #define DEFAULT_HASH_LENGTH 12
 #define SEED 127
+#define TEST
 
 #include <string>
+#include <bitset>
 
 using namespace std;
+
+typedef bitset<8> byte;
 
 class Converter {
 private:

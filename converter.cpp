@@ -4,6 +4,8 @@
 
 #include "converter.h"
 
+#include <vector>
+#include <iostream>
 
 std::string Converter::getOutput() {
     return output;
@@ -14,35 +16,20 @@ Converter::Converter(string str) {
 
     unsigned int hash = SEED;
     string out = "";
+    vector<byte> v;
 
+    #ifdef TEST
+    cout << "item as bytes: " << endl;
+    #endif
     for(char item : str){
+        byte *itemref = reinterpret_cast<byte *>(&item);
 
-        hash += SEED;
-        hash += hash >> 2;
-        hash += item;
-        hash += (hash << 7) + SEED + (hash + item);
-        hash ^= ((SEED - item) >> 11);
-        hash *= (SEED - hash);
-        out += hash;
-
-        hash %= SEED;
-        hash ^= ((hash >> 5) + (item << 3));
-        hash -= (hash >> 2) - SEED;
-        hash += (hash >> 4) ^ 7;
-        hash += (((SEED + hash ) % 5) >> 2);
-        hash += (item >> 5) + (SEED ^ hash);
-        out += hash;
-
-        hash ^= (hash >> 4) + item;
-        hash += (hash << 5) + hash;
-        hash += (SEED << 5);
-        hash += (hash << 3) + (item >> 4);
-        hash *= (hash >> 5) + SEED + hash;
-        hash ^= ((hash >> 3) ^ SEED);
-        out += hash;
-
-        //fiksuotas skaicius
-
+        #ifdef TEST
+        cout << *itemref << " ";
+        #endif
     }
+    #ifdef TEST
+    cout << endl;
+    #endif
     output = out;
 }
