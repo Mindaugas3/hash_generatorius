@@ -79,16 +79,19 @@ void IO::ReadFile(){
 
 std::string IO::ReadScreen(){
     std::cout << "Iveskite teksta kuri norite paversti i hasha \n";
+    std::string input_;
     std::cin.clear();
-    std::fflush(stdin);
-    std::string x;
-    std::cin >> x;
-    this->input = x;
-    return x;
+    std::cin >> input_;
+    this->input = input_;
+    return input_;
 }
 
-void IO::Output(std::string string) {
-    std::cout << "Sugeneruotas hash kodas: " << string << std::endl;
+void IO::Output(std::vector<uint8_t> bytes) {
+    std::cout << "Sugeneruotas hash kodas: " << std::endl;
+    for(uint8_t a : bytes){
+        std::cout << std::hex << static_cast<int>(a);
+    }
+    std::cout << std::endl;
 }
 
 std::string IO::getInput() {

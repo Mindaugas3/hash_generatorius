@@ -32,14 +32,12 @@ static const size_t max_index = (sizeof(valuesList) - 1);
 
 class Converter {
 private:
-    string input;
-    string output;
+    vector<byte> output;
 
 public:
-    Converter(string in);
-    string getOutput();
+    Converter(string input);
+    vector<byte> getOutput();
 
-//    static string asHex(const std::vector<uint8_t> &input);
     static byte operations(byte item, byte val);
     static vector<byte> TrimAndFill(vector<byte> ivec);
 };

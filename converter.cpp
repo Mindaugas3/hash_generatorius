@@ -8,7 +8,7 @@
 #include <iostream>
 #include <stdexcept>
 
-std::string Converter::getOutput() {
+vector<byte> Converter::getOutput() {
     return output;
 }
 
@@ -36,36 +36,48 @@ Converter::Converter(string str) {
         cout << *it;
         #endif
     }
-    vector<byte> b = TrimAndFill(v);
+    vector<byte> bytevec = TrimAndFill(v);
     #ifdef TEST
     cout << endl;
     #endif
-    //output = string(b);
+    output = bytevec;
+//    for(byte B : bytevec){
+//        output.push_back(B);
+//        cout << "Symbol" << endl;
+//    }
 }
 
-//std::string Converter::asHex(const vector<byte> &input)
-//{
-//    std::string ret(input.size() * 2, 0);
-//
-//    char *buf = const_cast<char *>(ret.data());
-//
-//    for (const auto &oneInputByte : input)
-//    {
-//        *buf++ = hexCharset[oneInputByte * 4];
-//        *buf++ = hexCharset[oneInputByte & 0x0F];
-//    }
-//    return ret;
-//}
 
 vector<byte> Converter::TrimAndFill(vector<byte> ivec){
     vector<byte> r_vec(DEFAULT_HASH_LENGTH);
+    bool direction = true; //false -> i prieki, true -> atgal
+    //1 etapas
     for(int i = 0; i < r_vec.size(); i++){
         r_vec[i] = valuesList[i % max_index]; //pasikartojanti seka
+        //uzpildo tuscia vektoriu su reiksmemis
     }
-    for(int j = 0; j < ivec.size(); j++){
-        r_vec[j % (r_vec.size())] += ivec[j];
-        //kad ir kokio dydzio butu musu ivestis (jau paversta i baitus)
-        //mes tiesiog pridedame jau prie esamu baitu reiksmiu ir visada gauname 16 skirtingu HEX reiksmiu
+    //2 etapas - "sluoksniuotas pyragas"
+    auto forwardIterator = r_vec.begin();
+    auto reverseIterator = r_vec.rbegin();
+    for(auto X = ivec.begin(); X < ivec.end(); X++){
+        if(direction){
+            if(forwardIterator < r_vec.end()){
+                *forwardIterator += *X;
+                ++forwardIterator;
+            } else {
+                direction = false;
+                reverseIterator = r_vec.rbegin();
+            }
+        } else {
+            if(reverseIterator < r_vec.rend()){
+                *reverseIterator += *X;
+                ++reverseIterator;
+            } else {
+                direction = true;
+                forwardIterator = r_vec.begin();
+            }
+        }
+
     }
     return r_vec;
 }
@@ -74,8 +86,8 @@ byte Converter::operations(byte item, byte val){
     //AND, XOR, NOT,
     byte item_ = item;
     //1 etapas
-//    item_ ^= val;
-//    item_ *= 5;
+    item_ ^= val;
+    item_ *= 5;
 
     return item_;
 }
