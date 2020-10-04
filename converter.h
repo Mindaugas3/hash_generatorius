@@ -7,10 +7,12 @@
 #define DEFAULT_HASH_LENGTH 16
 #define SEED 5381
 #define TEST
+#define ALGORITHM_TEST
 
 #include <string>
 #include <bitset>
 #include <vector>
+#include <exception>
 
 using namespace std;
 
@@ -37,11 +39,9 @@ public:
     Converter(string in);
     string getOutput();
 
-    string asHex(const std::vector<uint8_t> &input);
-    static const byte &asByte(char item);
-
-    byte operations(byte item, byte val);
-    vector<byte> TrimAndShuffle(vector<byte> ivec);
+//    static string asHex(const std::vector<uint8_t> &input);
+    static byte operations(byte item, byte val);
+    static vector<byte> TrimAndFill(vector<byte> ivec);
 };
 
 

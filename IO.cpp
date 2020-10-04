@@ -79,6 +79,8 @@ void IO::ReadFile(){
 
 std::string IO::ReadScreen(){
     std::cout << "Iveskite teksta kuri norite paversti i hasha \n";
+    std::cin.clear();
+    std::fflush(stdin);
     std::string x;
     std::cin >> x;
     this->input = x;

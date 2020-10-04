@@ -6,6 +6,7 @@
 
 
 #include <iostream>
+#include <stdexcept>
 
 std::string Converter::getOutput() {
     return output;
@@ -14,41 +15,50 @@ std::string Converter::getOutput() {
 Converter::Converter(string str) {
     //viskas vykdoma konstruktoriuje
 
-    unsigned int hash = SEED;
+    //if(str.empty()) throw std::runtime_error("Iveskite ka norite uzhashuoti maisos funkcijoje \n");
+
     vector<byte> v;
 
     #ifdef TEST
-    cout << "simbolis kaip uint8_t: " << endl;
+    cout << "simbolis: " << endl;
     #endif
     unsigned int index = 0;
-    for(char item : str){
-        byte itemref = asByte(operations(item, valuesList[index]));
-        v.push_back(itemref);
-        index == max_index ? index = 0 : index++; //elvio operatorius
+
+    for(auto it = str.begin(); it < str.end(); ++it){
+        v.push_back(operations(*it, valuesList[index]));
+
+        if(index == max_index){
+            index = 0;
+        } else {
+            index++;
+        }
+        #ifdef TEST
+        cout << *it;
+        #endif
     }
-    vector<byte> b = TrimAndShuffle(v);
+    vector<byte> b = TrimAndFill(v);
     #ifdef TEST
     cout << endl;
     #endif
-    output = asHex(b);
+    //output = string(b);
 }
 
-std::string Converter::asHex(const vector<byte> &input)
-{
-    std::string ret(input.size() * 2, 0);
+//std::string Converter::asHex(const vector<byte> &input)
+//{
+//    std::string ret(input.size() * 2, 0);
+//
+//    char *buf = const_cast<char *>(ret.data());
+//
+//    for (const auto &oneInputByte : input)
+//    {
+//        *buf++ = hexCharset[oneInputByte * 4];
+//        *buf++ = hexCharset[oneInputByte & 0x0F];
+//    }
+//    return ret;
+//}
 
-    char *buf = const_cast<char *>(ret.data());
-
-    for (const auto &oneInputByte : input)
-    {
-        *buf++ = hexCharset[oneInputByte * 4];
-        *buf++ = hexCharset[oneInputByte & 0x0F];
-    }
-    return ret;
-}
-
-vector<byte> Converter::TrimAndShuffle(vector<byte> ivec){
-    vector<byte> r_vec = vector<byte>(DEFAULT_HASH_LENGTH);
+vector<byte> Converter::TrimAndFill(vector<byte> ivec){
+    vector<byte> r_vec(DEFAULT_HASH_LENGTH);
     for(int i = 0; i < r_vec.size(); i++){
         r_vec[i] = valuesList[i % max_index]; //pasikartojanti seka
     }
@@ -57,25 +67,15 @@ vector<byte> Converter::TrimAndShuffle(vector<byte> ivec){
         //kad ir kokio dydzio butu musu ivestis (jau paversta i baitus)
         //mes tiesiog pridedame jau prie esamu baitu reiksmiu ir visada gauname 16 skirtingu HEX reiksmiu
     }
-}
-
-const byte& Converter::asByte(char item){
-    //verciame simboli i baita
-    byte *itemref = reinterpret_cast<byte *>(&item);
-
-#ifdef TEST
-    cout << *itemref << " ";
-#endif
-
-    return *itemref;
+    return r_vec;
 }
 
 byte Converter::operations(byte item, byte val){
     //AND, XOR, NOT,
     byte item_ = item;
     //1 etapas
-    item_ ^= val;
-    item_ *= 5;
+//    item_ ^= val;
+//    item_ *= 5;
 
     return item_;
 }

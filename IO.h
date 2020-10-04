@@ -5,6 +5,7 @@
 
 #ifndef UNTITLED1_IO_H
 #define UNTITLED1_IO_H
+#define TEST
 
 
 class IO {
