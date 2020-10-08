@@ -13,7 +13,7 @@ IO::IO(){
     std::string readKey = "R";
 
 
-    std::cout << "Kad nuskaityti is failo, iveskite " + fileKey + ". Kad nuskaityti ranka iveskite " + readKey + ". \n";
+    std::cout << "Kad nuskaityti is failo, iveskite [" + fileKey + "]. Kad nuskaityti ranka iveskite [" + readKey + "]. \n";
 
     char response = std::cin.get();
 
@@ -52,7 +52,7 @@ void IO::ReadFile(std::string fileName){
         {
             if(fd.fail())
             {
-                throw std::runtime_error("Nepavyko atidaryti failo!\n");
+                throw std::runtime_error("Nepavyko atidaryti failo! [Enter]\n");
             }
         }
         catch (const std::runtime_error& e)
