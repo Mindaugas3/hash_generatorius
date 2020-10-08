@@ -25,3 +25,5 @@ Pridėtas funkcionalumas palyginti kelis failus, pagal šešioliktainio kodo ir 
 
 ![](https://i.imgur.com/6EydqlB.png)
 
+**Rezultatas hašuojant konstituciją**
+![](https://i.imgur.com/WKsj9T7.png)
