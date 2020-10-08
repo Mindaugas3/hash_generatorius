@@ -1,4 +1,9 @@
 # hash_generatorius
  hashavimo generatorius
 
-Pradinis commitas
+**Rezultatas su tuščiu failu: **
+
+![](https://i.imgur.com/5dx8uad.png)
+
+
+
