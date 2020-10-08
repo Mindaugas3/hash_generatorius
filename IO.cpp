@@ -23,13 +23,17 @@ IO::IO(){
     }
 };
 
+IO::IO(std::string filename) {
+    std::cout << "Hasuojamas failas: " << filename << std::endl;
+    ReadFile(filename);
+}
 
 bool IO::CheckResponse(char a, char b, char response){
     if(response == a){
         ReadScreen();
         return true;
     } else if(response == b){
-        ReadFile();
+        RequestFile();
         return true;
     } else {
         std::cin.clear();
@@ -39,18 +43,11 @@ bool IO::CheckResponse(char a, char b, char response){
     }
 };
 
-void IO::ReadFile(){
-
-    std::string fileName;
-
-    std::cout << "Iveskite failo pavadinima: ";
-
-    std::cin >> fileName;
+void IO::ReadFile(std::string fileName){
 
     std::ifstream fd;
     fd.open(fileName);
-    do
-    {
+    do{
         try
         {
             if(fd.fail())
@@ -67,14 +64,24 @@ void IO::ReadFile(){
             std::cin >> fileName;
             fd.open(fileName);
         }
-    }
-    while(fd.fail());
+    } while(fd.fail());
 
     this->input.assign( (std::istreambuf_iterator<char>(fd) ),
                         (std::istreambuf_iterator<char>()   ));
 
     fd.close();
 
+}
+
+void IO::RequestFile(){
+
+    std::string fileName;
+
+    std::cout << "Iveskite failo pavadinima: ";
+
+    std::cin >> fileName;
+
+    ReadFile(fileName);
 }
 
 std::string IO::ReadScreen(){
@@ -98,5 +105,7 @@ std::string IO::getInput() {
     if(input.length() > 0) return input;
     else return "";
 }
+
+
 
 

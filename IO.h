@@ -16,11 +16,14 @@ class IO {
 
     public:
         IO();
+        explicit IO(std::string filename);
         std::string ReadScreen();
-        void ReadFile();
+        void ReadFile(std::string filename);
         static void Output(std::vector<uint8_t> bytes);
         bool CheckResponse(char a, char b, char response);
         std::string getInput();
+
+    void RequestFile();
 };
 
 
