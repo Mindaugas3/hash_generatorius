@@ -6,8 +6,16 @@
 #define HASH_GENERATORIUS_TESTS_H
 
 
-class Tests {
+#include "Converter.h"
+#include <vector>
 
+class Tests {
+private:
+    Converter conv1, conv2;
+public:
+    Tests(Converter conv1, Converter conv2);
+    void BinaryDifference();
+    void HexDifference();
 };
 
 

@@ -22,8 +22,6 @@ Converter::Converter(string str) {
     unsigned int index = 0;
 
     for(auto it = str.begin(); it < str.end(); ++it){
-        //maisymas vyksta tiesiogiai su input stringu
-
         v.push_back(operations(*it, valuesList[index]));
 
         if(index == max_index){
@@ -32,7 +30,6 @@ Converter::Converter(string str) {
             index++;
         }
     }
-    //input stringas isdeliojamas kaip sluoksniuotas pyragas
     vector<byte> bytevec = TrimAndFill(v);
     //shuffle(bytevec);
     output = bytevec;
@@ -104,5 +101,9 @@ byte Converter::operations(byte item, byte val){
     item_ += val;
 
     return item_;
+}
+
+Converter::Converter(const Converter& conv) {
+    this->output = conv.output;
 }
 

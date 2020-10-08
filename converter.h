@@ -5,9 +5,6 @@
 
 #ifndef DEFAULT_HASH_LENGTH
 #define DEFAULT_HASH_LENGTH 16
-#define SEED 5381
-#define TEST
-#define ALGORITHM_TEST
 
 #include <string>
 #include <bitset>
@@ -24,7 +21,7 @@ static vector<uint8_t> valuesList = { 34, 123, 252, 0, 11, 52, 114, 25, 87, 0, 1
 static const char hexCharset[] =
         "0123456789ABCDEF"; //16-taines sistemos
 
-static const size_t max_index = (sizeof(valuesList) - 1);
+static const size_t max_index = valuesList.size() - 1;
 
 //
 
@@ -35,15 +32,13 @@ private:
     vector<byte> output;
 
 public:
-    Converter(string input);
+    explicit Converter(string input);
+    Converter(const Converter& conv); //kopijavimo konstruktorius
     vector<byte> getOutput();
 
     static byte operations(byte item, byte val);
 
     static vector<byte> TrimAndFill(vector<byte> ivec);
-
-//    static void shuffle(vector<byte>& vec);
-    byte AddTwo(byte a, byte b);
 };
 
 
