@@ -26,4 +26,7 @@ Pridėtas funkcionalumas palyginti kelis failus, pagal šešioliktainio kodo ir 
 ![](https://i.imgur.com/6EydqlB.png)
 
 **Rezultatas hašuojant konstituciją**
+
+Procesorius: AMD Ryzen 7 3700X
+
 ![](https://i.imgur.com/WKsj9T7.png)
