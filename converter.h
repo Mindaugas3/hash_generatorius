@@ -39,7 +39,11 @@ public:
     vector<byte> getOutput();
 
     static byte operations(byte item, byte val);
+
     static vector<byte> TrimAndFill(vector<byte> ivec);
+
+//    static void shuffle(vector<byte>& vec);
+    byte AddTwo(byte a, byte b);
 };
 
 

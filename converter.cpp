@@ -19,12 +19,11 @@ Converter::Converter(string str) {
 
     vector<byte> v;
 
-    #ifdef TEST
-    cout << "simbolis: " << endl;
-    #endif
     unsigned int index = 0;
 
     for(auto it = str.begin(); it < str.end(); ++it){
+        //maisymas vyksta tiesiogiai su input stringu
+
         v.push_back(operations(*it, valuesList[index]));
 
         if(index == max_index){
@@ -32,55 +31,68 @@ Converter::Converter(string str) {
         } else {
             index++;
         }
-        #ifdef TEST
-        cout << *it;
-        #endif
     }
+    //input stringas isdeliojamas kaip sluoksniuotas pyragas
     vector<byte> bytevec = TrimAndFill(v);
-    #ifdef TEST
-    cout << endl;
-    #endif
+    //shuffle(bytevec);
     output = bytevec;
-//    for(byte B : bytevec){
-//        output.push_back(B);
-//        cout << "Symbol" << endl;
-//    }
 }
 
 
 vector<byte> Converter::TrimAndFill(vector<byte> ivec){
-    vector<byte> r_vec(DEFAULT_HASH_LENGTH);
-    bool direction = true; //false -> i prieki, true -> atgal
-    //1 etapas
+    vector<byte> r_vec(DEFAULT_HASH_LENGTH); //tuscias
+
+    size_t inputSize = ivec.size();
+
     for(int i = 0; i < r_vec.size(); i++){
         r_vec[i] = valuesList[i % max_index]; //pasikartojanti seka
         //uzpildo tuscia vektoriu su reiksmemis
     }
-    //2 etapas - "sluoksniuotas pyragas"
     auto forwardIterator = r_vec.begin();
-    auto reverseIterator = r_vec.rbegin();
-    for(auto X = ivec.begin(); X < ivec.end(); X++){
-        if(direction){
-            if(forwardIterator < r_vec.end()){
-                *forwardIterator += *X;
+    int valIndex = 0;
+
+    if(inputSize > DEFAULT_HASH_LENGTH){ //musu inputas ilgesnis uz hasho ilgi
+        for(auto X = ivec.begin(); X < ivec.end(); X++) {
+            size_t sizeAt = X - ivec.begin();
+            if (forwardIterator < r_vec.end()) {
+                //pildome
+                //sniego lavinos ciklas
+                for (auto iter = ivec.begin(); iter < ivec.end(); ++iter) {
+                    *X ^= *iter;
+                }
+                *forwardIterator ^= (*X >> 3u);
+                *forwardIterator += operations(*X, operations(*X, valuesList[valIndex]));
                 ++forwardIterator;
             } else {
-                direction = false;
-                reverseIterator = r_vec.rbegin();
-            }
-        } else {
-            if(reverseIterator < r_vec.rend()){
-                *reverseIterator += *X;
-                ++reverseIterator;
-            } else {
-                direction = true;
+                //nukreipiame pointeri i pati pirma iteratoriu
+                valIndex = 0;
                 forwardIterator = r_vec.begin();
             }
+            ++valIndex;
         }
-
+    } else { //musu inputas ir hashas yra vienodo ilgio arba inputas trumpesnis
+        auto inputIterator = ivec.begin();
+        for(auto B = r_vec.begin(); B < r_vec.end(); ++B){
+            if(inputIterator < ivec.end()){
+                //sniego lavinos ciklas
+                for (auto iter = ivec.begin(); iter < ivec.end(); ++iter) {
+                    *iter += *B;
+                }
+                *B += operations(*inputIterator, 3);
+                *B <<= 3u;
+                *B ^= *inputIterator;
+                ++inputIterator;
+            } else {
+                //nukreipiame pointeri i pati pirma inputo iteratoriu
+                inputIterator = ivec.begin();
+            }
+            ++valIndex;
+        }
     }
+
     return r_vec;
 }
+
 
 byte Converter::operations(byte item, byte val){
     //AND, XOR, NOT,
@@ -88,6 +100,9 @@ byte Converter::operations(byte item, byte val){
     //1 etapas
     item_ ^= val;
     item_ *= 5;
+    item_ >>= 7u;
+    item_ += val;
 
     return item_;
 }
+
