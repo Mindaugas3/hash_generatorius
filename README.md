@@ -1,5 +1,11 @@
 # hash_generatorius
  hashavimo generatorius
+ 
+ Savybės:
+ 1. Maišos funkcija generuoja vienodo dydžio bitų vektorius, kurie yra pilnai užpildomi nepriklausomai nuo įvesties dydžio. Vienodo dydžio bitų vektoriai, bet išvesties šešioliktainiu skaičiumi ilgis gali skirtis
+ 2. Maišos funkcija nenaudoja random elementų - hash kodas priklauso tik nuo įvesties.(Deterministinė funkcija)
+ 3. Pamėgintas įgyvendinti sniego lavinos efektas, kuris (dalinai) veikia tik esant stambiam failui su daug simbolių, t.y. pakeitus bitą stambiame faile maišos kodas skirsis šiek tiek labiau nei pakeitus bitą smulkiame faile.
+ 
 
 **Rezultatas su tuščiu failu**
 
