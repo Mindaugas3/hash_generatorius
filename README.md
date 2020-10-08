@@ -14,3 +14,8 @@ Pridėtas funkcionalumas palyginti kelis failus, pagal šešioliktainio kodo ir 
 **Rezultatas su 1000 atsitiktinai sugeneruotų simbolių. Smarkiai skiriasi**
 
 ![](https://i.imgur.com/xCAVdcs.png)
+
+**Rezultatas su 1000 atsitiktinai sugeneruotų simbolių. Failas buvo nukopijuotas ir viena atsitiktinai pasirinkta raidė "t" buvo pakeista į raidę "h"**
+
+![](https://i.imgur.com/6EydqlB.png)
+
