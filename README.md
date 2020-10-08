@@ -11,4 +11,6 @@ Pridėtas funkcionalumas palyginti kelis failus, pagal šešioliktainio kodo ir 
 
 ![](https://i.imgur.com/KTjY4eS.png)
 
+**Rezultatas su 1000 atsitiktinai sugeneruotų simbolių. Smarkiai skiriasi**
 
+![](https://i.imgur.com/xCAVdcs.png)
