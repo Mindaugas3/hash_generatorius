@@ -5,6 +5,8 @@
 #include <iostream>
 #include <algorithm>
 #include <sstream>
+#include <fstream>
+#include <ctime>
 #include "Tests.h"
 
 using namespace std;
@@ -17,7 +19,7 @@ void Tests::BinaryDifference() {
     //not need to sort since it already sorted
     set_difference(firstVector.begin(), firstVector.end(), secondVector.begin(), secondVector.end(),
                         inserter(diff, diff.begin()));
-    cout << "Bitu vektoriai skiriasi per: " << diff.size() << " elementu. Is viso elementu vektoriuose: " << firstVector.size() << endl;
+    cout << "Baitu vektoriai skiriasi per: " << diff.size() << " elementu. Is viso elementu vektoriuose: " << firstVector.size() << endl;
 }
 
 void Tests::HexDifference() {
@@ -42,6 +44,17 @@ void Tests::HexDifference() {
 Tests::Tests(Converter conv1, Converter conv2) : conv1(conv1), conv2(conv2) {
     BinaryDifference();
     HexDifference();
+    //generateSymbols1000();
+}
+
+void Tests::generateSymbols1000() {
+    ofstream testFile("1000simboliu.txt");
+    srand(time(NULL));
+    for(int i = 0; i < 1000; i++){
+        char randomChar = (rand() % 26) + 'a';
+        testFile << randomChar;
+    }
+    testFile.close();
 }
 
 
