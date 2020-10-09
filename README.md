@@ -94,4 +94,4 @@ Pridėtas funkcionalumas palyginti kelis failus, pagal šešioliktainio kodo ir 
 
 Procesorius: AMD Ryzen 7 3700X
 
-![](https://i.imgur.com/WKsj9T7.png)
+![](https://i.imgur.com/OGXZLZ2.png)
