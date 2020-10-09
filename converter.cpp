@@ -50,7 +50,6 @@ vector<byte> Converter::TrimAndFill(vector<byte> ivec){
 
     if(inputSize > DEFAULT_HASH_LENGTH){ //musu inputas ilgesnis uz hasho ilgi
         for(auto X = ivec.begin(); X < ivec.end(); X++) {
-            size_t sizeAt = X - ivec.begin();
             if (forwardIterator < r_vec.end()) {
                 //pildome
                 //sniego lavinos ciklas
