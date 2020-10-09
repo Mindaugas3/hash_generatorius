@@ -39,6 +39,7 @@ public:
     static byte operations(byte item, byte val);
 
     static vector<byte> TrimAndFill(vector<byte> ivec);
+    static unsigned long long int addAll(vector<byte> items);
 };
 
 

@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <stdexcept>
+#include <chrono>
 
 vector<byte> Converter::getOutput() {
     return output;
@@ -30,6 +31,7 @@ Converter::Converter(string str) {
             index++;
         }
     }
+
     vector<byte> bytevec = TrimAndFill(v);
     //shuffle(bytevec);
     output = bytevec;
@@ -37,25 +39,26 @@ Converter::Converter(string str) {
 
 
 vector<byte> Converter::TrimAndFill(vector<byte> ivec){
+
     vector<byte> r_vec(DEFAULT_HASH_LENGTH); //tuscias
-
     size_t inputSize = ivec.size();
-
+    
     for(int i = 0; i < r_vec.size(); i++){
         r_vec[i] = valuesList[i % max_index]; //pasikartojanti seka
         //uzpildo tuscia vektoriu su reiksmemis
     }
+
     auto forwardIterator = r_vec.begin();
     int valIndex = 0;
 
+    unsigned long long bytesSum = addAll(ivec);
+
+    //problemine dalis - uzima daug laiko
     if(inputSize > DEFAULT_HASH_LENGTH){ //musu inputas ilgesnis uz hasho ilgi
         for(auto X = ivec.begin(); X < ivec.end(); X++) {
             if (forwardIterator < r_vec.end()) {
                 //pildome
-                //sniego lavinos ciklas
-                for (auto iter = ivec.begin(); iter < ivec.end(); ++iter) {
-                    *X ^= *iter;
-                }
+                *X ^= bytesSum;
                 *forwardIterator ^= (*X >> 3u);
                 *forwardIterator += operations(*X, operations(*X, valuesList[valIndex]));
                 ++forwardIterator;
@@ -66,14 +69,13 @@ vector<byte> Converter::TrimAndFill(vector<byte> ivec){
             }
             ++valIndex;
         }
+        //dalis apacioje neuzims daug laiko
     } else { //musu inputas ir hashas yra vienodo ilgio arba inputas trumpesnis
         auto inputIterator = ivec.begin();
         for(auto B = r_vec.begin(); B < r_vec.end(); ++B){
             if(inputIterator < ivec.end()){
                 //sniego lavinos ciklas
-                for (auto iter = ivec.begin(); iter < ivec.end(); ++iter) {
-                    *iter += *B;
-                }
+                *B += bytesSum;
                 *B += operations(*inputIterator, 3);
                 *B <<= 3u;
                 *B ^= *inputIterator;
@@ -104,5 +106,13 @@ byte Converter::operations(byte item, byte val){
 
 Converter::Converter(const Converter& conv) {
     this->output = conv.output;
+}
+
+unsigned long long int Converter::addAll(vector<byte> items) {
+    unsigned long long int value = 0;
+    for(byte b : items){
+        value += (int) b;
+    }
+    return value;
 }
 
