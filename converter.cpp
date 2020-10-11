@@ -42,7 +42,7 @@ vector<byte> Converter::TrimAndFill(vector<byte> ivec){
 
     vector<byte> r_vec(DEFAULT_HASH_LENGTH); //tuscias
     size_t inputSize = ivec.size();
-    
+
     for(int i = 0; i < r_vec.size(); i++){
         r_vec[i] = valuesList[i % max_index]; //pasikartojanti seka
         //uzpildo tuscia vektoriu su reiksmemis

@@ -57,5 +57,9 @@ void Tests::generateSymbols1000() {
     testFile.close();
 }
 
+void Tests::checkCollission() {
+
+}
+
 
 

@@ -17,7 +17,7 @@ public:
     void BinaryDifference();
     void HexDifference();
     static void generateSymbols1000();
-
+    void checkCollission();
 };
 
 
