@@ -4,6 +4,13 @@
 #include "converter.h"
 #include "Tests.h"
 
+void readFile(string filename);
+void readFileAndMeasureTime(string filename);
+void readFileByLine(string filename);
+void testForCollision(string filename);
+
+void readConsole();
+
 int main(int argc, char **argv) {
 
 
@@ -11,23 +18,23 @@ int main(int argc, char **argv) {
 
         if((string) argv[1] == "-file" || (string) argv[1] == "-f"){ //tiesiog suhasuoja faila
 
-            IO io = IO((string) argv[2]);
-            Converter converter = Converter(io.getInput());
-            IO::Output(converter.getOutput());
+            readFile(argv[2]);
 
         } else if((string) argv[1] == "-timer"|| (string) argv[1] == "-t"){ //suhasuoja ir ismatuoja kiek uztruko
 
-            IO io = IO((string) argv[2]);
-            auto start = std::chrono::system_clock::now();
-            Converter converter = Converter(io.getInput());
-            auto end = std::chrono::system_clock::now();
-            std::chrono::duration<double> diff = end-start;
-            std::cout << "Laikas per kuri buvo suhasuotas failas: "<< argv[2] << " : " << diff.count() << " s\n";
+            readFileAndMeasureTime(argv[2]);
 
         } else if((string) argv[1] == "-line" || (string) argv[1] == "-l"){ //suhasuoja eilute po eilutes
 
+            readFileByLine(argv[2]);
+
         } else if((string) argv[1] == "-collision" || (string) argv[1] == "-col"){ //koliziju testas
 
+            testForCollision(argv[2]);
+
+        } else if((string) argv[1] == "-write" || (string) argv[1] == "-w"){ //irasome ranka(tinka ir be argumentu
+
+            readConsole();
         }
 
 
@@ -56,4 +63,32 @@ int main(int argc, char **argv) {
 
     system("PAUSE");
     return 0;
+}
+
+void readFile(string filename){
+    IO io = IO((string) filename);
+    Converter converter = Converter(io.getInput());
+    IO::Output(converter.getOutput());
+}
+
+void readFileAndMeasureTime(string filename){
+
+    IO io = IO((string) filename);
+    auto start = std::chrono::system_clock::now();
+    Converter converter = Converter(io.getInput());
+    auto end = std::chrono::system_clock::now();
+    std::chrono::duration<double> diff = end-start;
+    std::cout << "Laikas per kuri buvo suhasuotas failas: "<< filename << " : " << diff.count() << " s\n";
+}
+
+void readFileByLine(string filename){
+    //TODO
+}
+
+void testForCollision(string filename){
+    //TODO
+}
+
+void readConsole(){
+    //TODO
 }
