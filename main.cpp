@@ -1,7 +1,6 @@
 #include <iostream>
 #include <chrono>
 #include "IO.h"
-#include "converter.h"
 #include "Tests.h"
 
 void readFile(string filename);
@@ -34,9 +33,16 @@ int main(int argc, char **argv) {
 
             testForCollision(argv[2]);
 
-        } else if((string) argv[1] == "-write" || (string) argv[1] == "-w"){ //irasome ranka(tinka ir be argumentu
-
-            readConsole();
+        } else if((string) argv[1] == "-generate" || (string) argv[1] == "-g"){ //generuojami failai
+            if((string) argv[2] == "1000"){
+                cout << "generuojamas failas su 1000 simboliu: \n";
+                Tests::generateSymbols1000();
+            } else if((string) argv[2] == "pairs"){
+                Tests::generatePairs10();
+                Tests::generatePairs100();
+                Tests::generatePairs500();
+                Tests::generatePairs1000();
+            }
         }
 
 
@@ -45,6 +51,20 @@ int main(int argc, char **argv) {
             compareTwo(argv[2], argv[3]);
         }
 
+    } else if(argc == 2){
+        if((string) argv[1] == "-write" || (string) argv[1] == "-w"){ //irasome ranka(tinka ir be argumentu
+            readConsole();
+        }  else if((string) argv[1] == "-help" || (string) argv[1] == "-h" || (string) argv[1] == "?"){
+            cout << "-help, -h, ?: pagalbos komanda\n";
+            cout << "-file, -f [Failo vardas] : \t Nuskaito faila ir parodo hasha\n";
+            cout << "-timer, -t [Failo vardas] : \t Parodo per kiek laiko suhasuoja faila\n";
+            cout << "-line, -l [Failo vardas] : \t Nuskaito faila ir suhasuoja kiekviena eilute\n";
+            cout << "-collision, -col [Failo vardas] : \t Nuskaito faila ir aptinka kolizijas kiekvienoje eiluteje\n";
+            cout << "-write, -w: \t Ivesti galima ranka\n";
+            cout << "-generate, -g [Argumentas] : \t Generuoja reiksmes testavimui\n";
+            cout << "\t Argumentas: 1000 : \t Generuoja faila su 1000 atsitiktiniu simboliu\n";
+            cout << "\t Argumentas: pairs : \t Generuoja faila su 100000 atsitiktiniu simboliu poru\n";
+        }
     } else {
         readConsole();
     }
@@ -90,7 +110,7 @@ void compareTwo(string first, string second){
     Converter converter2 = Converter(io2.getInput());
     cout << "=============================================================================" << endl;
     //testai
-    Tests tests(converter1, converter2);
+    Tests::compareTwo(converter1, converter2);
     cout << "=============================================================================" << endl;
     cout << first << endl;
     IO::Output(converter1.getOutput());

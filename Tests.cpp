@@ -16,7 +16,6 @@ void Tests::BinaryDifference(Converter conv1, Converter conv2) {
     vector<byte> firstVector = conv1.getOutput();
     vector<byte> secondVector = conv2.getOutput();
     vector<byte> diff;
-    //not need to sort since it already sorted
     set_difference(firstVector.begin(), firstVector.end(), secondVector.begin(), secondVector.end(),
                         inserter(diff, diff.begin()));
     cout << "Baitu vektoriai skiriasi per: " << diff.size() << " elementu. Is viso elementu vektoriuose: " << firstVector.size() << endl;
@@ -32,7 +31,7 @@ void Tests::HexDifference(Converter conv1, Converter conv2) {
     for(byte b : secondVector){
         second << std::hex << static_cast<int>(b);
     }
-    string diff = "";
+    string diff;
     string string_F = first.str();
     string string_S = second.str();
     set_difference(string_F.begin(), string_F.end(), string_S.begin(), string_S.end(),
@@ -47,12 +46,34 @@ void Tests::generateSymbols1000() {
     ofstream testFile("1000simboliu.txt");
     srand(time(NULL));
     for(int i = 0; i < 1000; i++){
-        testFile << RANDOMCHAR;
+        char randomChar = (rand() % 26) + 'a';
+        testFile <<  randomChar;
     }
     testFile.close();
 }
 
 void Tests::checkCollission() {
+    //TODO
+}
+
+void Tests::compareTwo(Converter conv1, Converter conv2) {
+    BinaryDifference(conv1, conv2);
+    HexDifference(conv1, conv2);
+}
+
+void Tests::generatePairs10() {
+
+}
+
+void Tests::generatePairs100() {
+
+}
+
+void Tests::generatePairs500() {
+
+}
+
+void Tests::generatePairs1000() {
 
 }
 

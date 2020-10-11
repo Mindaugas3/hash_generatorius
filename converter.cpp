@@ -3,9 +3,6 @@
 //
 
 #include "converter.h"
-
-
-#include <iostream>
 #include <stdexcept>
 #include <chrono>
 
@@ -14,9 +11,6 @@ vector<byte> Converter::getOutput() {
 }
 
 Converter::Converter(string str) {
-    //viskas vykdoma konstruktoriuje
-
-    //if(str.empty()) throw std::runtime_error("Iveskite ka norite uzhashuoti maisos funkcijoje \n");
 
     vector<byte> v;
 
@@ -33,7 +27,6 @@ Converter::Converter(string str) {
     }
 
     vector<byte> bytevec = TrimAndFill(v);
-    //shuffle(bytevec);
     output = bytevec;
 }
 

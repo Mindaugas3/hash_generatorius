@@ -9,7 +9,6 @@
 #include "Converter.h"
 #include <vector>
 
-#define RANDOMCHAR (rand() % 26) + 'a'
 
 
 class Tests { //klase skirta failu dvejetainio ir sesioliktainio skirtumu palyginimui ir taip pat simboliu generavimui
@@ -17,9 +16,14 @@ private:
 
 public:
     Tests();
+    static void compareTwo(Converter conv1, Converter conv2);
     static void BinaryDifference(Converter conv1, Converter conv2);
     static void HexDifference(Converter conv1, Converter conv2);
     static void generateSymbols1000();
+    static void generatePairs10();
+    static void generatePairs100();
+    static void generatePairs500();
+    static void generatePairs1000();
     void checkCollission();
 };
 
