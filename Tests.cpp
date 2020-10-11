@@ -47,8 +47,7 @@ void Tests::generateSymbols1000() {
     ofstream testFile("1000simboliu.txt");
     srand(time(NULL));
     for(int i = 0; i < 1000; i++){
-        char randomChar = (rand() % 26) + 'a';
-        testFile << randomChar;
+        testFile << RANDOMCHAR;
     }
     testFile.close();
 }

@@ -53,7 +53,6 @@ vector<byte> Converter::TrimAndFill(vector<byte> ivec){
 
     unsigned long long bytesSum = addAll(ivec);
 
-    //problemine dalis - uzima daug laiko
     if(inputSize > DEFAULT_HASH_LENGTH){ //musu inputas ilgesnis uz hasho ilgi
         for(auto X = ivec.begin(); X < ivec.end(); X++) {
             if (forwardIterator < r_vec.end()) {
@@ -115,4 +114,8 @@ unsigned long long int Converter::addAll(vector<byte> items) {
     }
     return value;
 }
+
+Converter& Converter::operator=(const Converter &conv) = default;
+
+Converter::~Converter() = default;
 

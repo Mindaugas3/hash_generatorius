@@ -34,12 +34,17 @@ private:
 public:
     explicit Converter(string input);
     Converter(const Converter& conv); //kopijavimo konstruktorius
+    Converter& operator=(const Converter& conv); //prilyginimo kopijavimo konstruktorius
+
     vector<byte> getOutput();
 
     static byte operations(byte item, byte val);
 
     static vector<byte> TrimAndFill(vector<byte> ivec);
     static unsigned long long int addAll(vector<byte> items);
+
+    ~Converter(); //destruktorius
+
 };
 
 

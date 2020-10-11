@@ -9,6 +9,9 @@
 #include "Converter.h"
 #include <vector>
 
+#define RANDOMCHAR (rand() % 26) + 'a'
+
+
 class Tests { //klase skirta failu dvejetainio ir sesioliktainio skirtumu palyginimui ir taip pat simboliu generavimui
 private:
 
