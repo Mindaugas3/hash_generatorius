@@ -11,11 +11,11 @@
 
 class Tests { //klase skirta failu dvejetainio ir sesioliktainio skirtumu palyginimui ir taip pat simboliu generavimui
 private:
-    Converter conv1, conv2;
+
 public:
-    Tests(Converter conv1, Converter conv2);
-    void BinaryDifference();
-    void HexDifference();
+    Tests();
+    static void BinaryDifference(Converter conv1, Converter conv2);
+    static void HexDifference(Converter conv1, Converter conv2);
     static void generateSymbols1000();
     void checkCollission();
 };

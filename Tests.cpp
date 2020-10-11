@@ -11,7 +11,7 @@
 
 using namespace std;
 
-void Tests::BinaryDifference() {
+void Tests::BinaryDifference(Converter conv1, Converter conv2) {
     int BitDiffPercent = 0;
     vector<byte> firstVector = conv1.getOutput();
     vector<byte> secondVector = conv2.getOutput();
@@ -22,7 +22,7 @@ void Tests::BinaryDifference() {
     cout << "Baitu vektoriai skiriasi per: " << diff.size() << " elementu. Is viso elementu vektoriuose: " << firstVector.size() << endl;
 }
 
-void Tests::HexDifference() {
+void Tests::HexDifference(Converter conv1, Converter conv2) {
     vector<byte> firstVector = conv1.getOutput();
     vector<byte> secondVector = conv2.getOutput();
     stringstream first, second;
@@ -41,11 +41,7 @@ void Tests::HexDifference() {
 
 }
 
-Tests::Tests(Converter conv1, Converter conv2) : conv1(conv1), conv2(conv2) {
-    BinaryDifference();
-    HexDifference();
-    //generateSymbols1000();
-}
+Tests::Tests()= default;
 
 void Tests::generateSymbols1000() {
     ofstream testFile("1000simboliu.txt");

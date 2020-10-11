@@ -11,6 +11,8 @@ void testForCollision(string filename);
 
 void readConsole();
 
+void compareTwo(string first, string second);
+
 int main(int argc, char **argv) {
 
 
@@ -40,25 +42,11 @@ int main(int argc, char **argv) {
 
     } else if(argc > 3){ //komanda -files
         if((string) argv[1] == "-compare" || (string) argv[1] == "-c"){ //palygina skirtumus
-            IO io = IO(argv[2]);
-            IO io2 = IO(argv[3]);
-            Converter converter1 = Converter(io.getInput());
-            Converter converter2 = Converter(io2.getInput());
-            cout << "=============================================================================" << endl;
-            //testai
-            Tests tests(converter1, converter2);
-            cout << "=============================================================================" << endl;
-            cout << argv[2] << endl;
-            IO::Output(converter1.getOutput());
-            cout << "=============================================================================" << endl;
-            cout << argv[3] << endl;
-            IO::Output(converter2.getOutput());
+            compareTwo(argv[2], argv[3]);
         }
 
     } else {
-        IO io = IO();
-        Converter converter = Converter(io.getInput());
-        IO::Output(converter.getOutput());
+        readConsole();
     }
 
     system("PAUSE");
@@ -90,5 +78,23 @@ void testForCollision(string filename){
 }
 
 void readConsole(){
-    //TODO
+    IO io = IO();
+    Converter converter = Converter(io.getInput());
+    IO::Output(converter.getOutput());
+}
+
+void compareTwo(string first, string second){
+    IO io = IO(first);
+    IO io2 = IO(second);
+    Converter converter1 = Converter(io.getInput());
+    Converter converter2 = Converter(io2.getInput());
+    cout << "=============================================================================" << endl;
+    //testai
+    Tests tests(converter1, converter2);
+    cout << "=============================================================================" << endl;
+    cout << first << endl;
+    IO::Output(converter1.getOutput());
+    cout << "=============================================================================" << endl;
+    cout << second << endl;
+    IO::Output(converter2.getOutput());
 }
