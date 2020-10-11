@@ -56,14 +56,14 @@ int main(int argc, char **argv) {
             readConsole();
         }  else if((string) argv[1] == "-help" || (string) argv[1] == "-h" || (string) argv[1] == "?"){
             cout << "-help, -h, ?: pagalbos komanda\n";
-            cout << "-file, -f [Failo vardas] : \t Nuskaito faila ir parodo hasha\n";
-            cout << "-timer, -t [Failo vardas] : \t Parodo per kiek laiko suhasuoja faila\n";
-            cout << "-line, -l [Failo vardas] : \t Nuskaito faila ir suhasuoja kiekviena eilute\n";
+            cout << "-file, -f [Failo vardas] : \t\t Nuskaito faila ir parodo hasha\n";
+            cout << "-timer, -t [Failo vardas] : \t\t Parodo per kiek laiko suhasuoja faila\n";
+            cout << "-line, -l [Failo vardas] : \t\t Nuskaito faila ir suhasuoja kiekviena eilute\n";
             cout << "-collision, -col [Failo vardas] : \t Nuskaito faila ir aptinka kolizijas kiekvienoje eiluteje\n";
-            cout << "-write, -w: \t Ivesti galima ranka\n";
-            cout << "-generate, -g [Argumentas] : \t Generuoja reiksmes testavimui\n";
-            cout << "\t Argumentas: 1000 : \t Generuoja faila su 1000 atsitiktiniu simboliu\n";
-            cout << "\t Argumentas: pairs : \t Generuoja faila su 100000 atsitiktiniu simboliu poru\n";
+            cout << "-write, -w: \t\t\t\t Ivesti galima ranka\n";
+            cout << "-generate, -g [Argumentas] : \t\t Generuoja reiksmes testavimui\n";
+            cout << "\t Argumentas: 1000 : \t\t\t Generuoja faila su 1000 atsitiktiniu simboliu\n";
+            cout << "\t Argumentas: pairs : \t\t\t Generuoja faila su 100000 atsitiktiniu simboliu poru\n";
         }
     } else {
         readConsole();
