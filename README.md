@@ -1,6 +1,9 @@
 # hash_generatorius
  hashavimo generatorius
  
+# Patobulinimai:
+1. Atsikratyta dvigubo ciklo - konstitucija hašuojama žymiai greičiau (45 s -> 8 ms) 
+ 
 # Paleidimo instrukcijos:
 1. (Turintiems CLion) Edit Run/Debug configurations -> Edit Configurations -> Nurodyti argumentus(failų pavadinimus - iki 2 failų) eilutėje "Program arguments"
 
@@ -94,4 +97,4 @@ Pridėtas funkcionalumas palyginti kelis failus, pagal šešioliktainio kodo ir 
 
 Procesorius: AMD Ryzen 7 3700X
 
-![](https://i.imgur.com/WKsj9T7.png)
+![](https://i.imgur.com/OGXZLZ2.png)
