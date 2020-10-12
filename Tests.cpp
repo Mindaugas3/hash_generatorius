@@ -41,8 +41,6 @@ void Tests::HexDifference(Converter conv1, Converter conv2) {
 
 }
 
-Tests::Tests()= default;
-
 void Tests::generateSymbols1000() {
     ofstream testFile("1000simboliu.txt");
     srand(time(NULL));
@@ -53,7 +51,7 @@ void Tests::generateSymbols1000() {
     testFile.close();
 }
 
-void Tests::checkCollission() {
+void Tests::checkCollission(vector<string> allHashes) {
 
 }
 

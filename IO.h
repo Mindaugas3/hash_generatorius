@@ -12,11 +12,11 @@
 class IO {
     private:
         std::string input;
-        std::string output;
 
     public:
         IO();
         explicit IO(std::string filename);
+        static std::vector<std::string> ReadFileWithLines(std::string filename);
         std::string ReadScreen();
         void ReadFile(std::string filename);
         static void Output(std::vector<uint8_t> bytes);

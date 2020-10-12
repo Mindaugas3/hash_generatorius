@@ -88,11 +88,18 @@ void readFileAndMeasureTime(string filename){
 }
 
 void readFileByLine(string filename){
-    //TODO
+
+    vector<string> lines = IO::ReadFileWithLines(filename);
+    for(const string& line : lines){
+        Converter converter = Converter(line);
+        IO::Output(converter.getOutput());
+        cout << "\n";
+    }
 }
 
 void testForCollision(string filename){
-    //TODO
+    vector<string> lines = IO::ReadFileWithLines(filename);
+    Tests::checkCollission(lines);
 }
 
 void readConsole(){

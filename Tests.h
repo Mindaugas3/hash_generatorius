@@ -15,13 +15,12 @@ class Tests { //klase skirta failu dvejetainio ir sesioliktainio skirtumu palygi
 private:
 
 public:
-    Tests();
     static void compareTwo(Converter conv1, Converter conv2);
     static void BinaryDifference(Converter conv1, Converter conv2);
     static void HexDifference(Converter conv1, Converter conv2);
     static void generateSymbols1000();
     static void generatePairs(ofstream& basicOfstream, int length);
-    void checkCollission();
+    static void checkCollission(vector<string> allHashes);
     static void makePairsFiles();
 };
 

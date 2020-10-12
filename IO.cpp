@@ -106,6 +106,37 @@ std::string IO::getInput() {
     else return "";
 }
 
+std::vector<std::string> IO::ReadFileWithLines(std::string filename) {
+    std::ifstream i(filename);
+
+    do {
+        try {
+            if(i.fail())
+            {
+                throw std::runtime_error("Nepavyko atidaryti failo! [Enter]\n");
+            }
+        } catch (const std::runtime_error& error) {
+            std::cout << error.what();
+            filename = "";
+            std::cin.ignore(256,'\n');
+            std::cout<<"Iveskite dar karta failo pavadinima: ";
+            std::cin >> filename;
+            i.open(filename);
+        }
+    } while (i.fail());
+
+    //skaitome
+    std::vector<std::string> lines;
+
+    std::string line;
+    while(std::getline(i, line)){
+
+        lines.push_back(line);
+    }
+
+    return lines;
+}
+
 
 
 
