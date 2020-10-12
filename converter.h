@@ -4,7 +4,7 @@
 
 
 #ifndef DEFAULT_HASH_LENGTH
-#define DEFAULT_HASH_LENGTH 16
+#define DEFAULT_HASH_LENGTH 32
 
 #include <string>
 #include <bitset>
@@ -34,6 +34,16 @@ public:
     vector<byte> getOutput();
 
     static byte operations(byte item, byte val);
+
+    static byte rshift(byte item, byte amount);
+    static byte rrot(byte item, byte amount);
+    static byte lshift(byte item, byte amount);
+    static byte lrot(byte item, byte amount);
+    static byte XOR(byte item, byte value);
+    static byte flip(byte item);
+    static byte AND(byte item, byte value);
+    
+
     static vector<byte> TrimAndFill(vector<byte> ivec);
     static unsigned long long int addAll(vector<byte> items);
 

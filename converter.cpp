@@ -96,6 +96,8 @@ byte Converter::operations(byte item, byte val){
     return item_;
 }
 
+
+
 Converter::Converter(const Converter& conv) {
     this->output = conv.output;
 }

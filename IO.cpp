@@ -7,6 +7,7 @@
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
+#include <sstream>
 
 IO::IO(){
     std::string fileKey = "F";
@@ -93,12 +94,14 @@ std::string IO::ReadScreen(){
     return input_;
 }
 
-void IO::Output(std::vector<uint8_t> bytes) {
+std::string IO::Output(std::vector<uint8_t> bytes) {
+    std::stringstream Q;
     std::cout << "Sugeneruotas hash kodas: " << std::endl;
     for(uint8_t a : bytes){
-        std::cout << std::hex << static_cast<int>(a);
+        Q << std::hex << static_cast<int>(a);
     }
-    std::cout << std::endl;
+    std::cout << Q.str() << std::endl;
+    return Q.str();
 }
 
 std::string IO::getInput() {

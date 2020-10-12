@@ -99,7 +99,12 @@ void readFileByLine(string filename){
 
 void testForCollision(string filename){
     vector<string> lines = IO::ReadFileWithLines(filename);
-    Tests::checkCollission(lines);
+    vector<string> hashes;
+    for(string line : lines){
+        Converter conv = Converter(line);
+        hashes.push_back(IO::Output(conv.getOutput()));
+    }
+    Tests::checkCollission(hashes);
 }
 
 void readConsole(){

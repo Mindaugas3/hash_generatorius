@@ -52,7 +52,16 @@ void Tests::generateSymbols1000() {
 }
 
 void Tests::checkCollission(vector<string> allHashes) {
-
+    int collission = 0;
+    for(string hashCode : allHashes){
+        int num = std::count(allHashes.begin(), allHashes.end(), hashCode);
+        if(num > 1){
+            cout << "Kolizija surasta: " << hashCode << ", kartojasi: "<< num
+            << " kartu "<<endl;
+            collission++;
+        }
+    }
+    cout << "Is viso koliziju: " << collission << " is 100000\n";
 }
 
 void Tests::compareTwo(Converter conv1, Converter conv2) {

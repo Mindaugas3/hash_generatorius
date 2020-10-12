@@ -19,7 +19,7 @@ class IO {
         static std::vector<std::string> ReadFileWithLines(std::string filename);
         std::string ReadScreen();
         void ReadFile(std::string filename);
-        static void Output(std::vector<uint8_t> bytes);
+        static std::string Output(std::vector<uint8_t> bytes);
         bool CheckResponse(char a, char b, char response);
         std::string getInput();
 
