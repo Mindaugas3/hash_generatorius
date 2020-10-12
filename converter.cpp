@@ -110,6 +110,35 @@ unsigned long long int Converter::addAll(vector<byte> items) {
     return value;
 }
 
+byte Converter::rshift(byte item, byte amount) {
+    return (item >> amount);
+}
+
+byte Converter::rrot(byte item, byte amount) {
+    return (item >> amount) | (item << (-amount & 7));
+}
+
+byte Converter::lshift(byte item, byte amount) {
+    return (item << amount);
+}
+
+byte Converter::lrot(byte item, byte amount) {
+    return (item << amount) | (item >> (-amount & 7));
+}
+
+byte Converter::XOR(byte item, byte value) {
+    return item ^ value;
+}
+
+byte Converter::flip(byte item) {
+    return ~item;
+}
+
+byte Converter::AND(byte item, byte value) {
+    return item + value;
+}
+
+
 Converter& Converter::operator=(const Converter &conv) = default;
 
 Converter::~Converter() = default;

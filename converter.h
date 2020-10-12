@@ -42,7 +42,7 @@ public:
     static byte XOR(byte item, byte value);
     static byte flip(byte item);
     static byte AND(byte item, byte value);
-    
+
 
     static vector<byte> TrimAndFill(vector<byte> ivec);
     static unsigned long long int addAll(vector<byte> items);
