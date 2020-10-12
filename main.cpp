@@ -38,10 +38,8 @@ int main(int argc, char **argv) {
                 cout << "generuojamas failas su 1000 simboliu: \n";
                 Tests::generateSymbols1000();
             } else if((string) argv[2] == "pairs"){
-                Tests::generatePairs10();
-                Tests::generatePairs100();
-                Tests::generatePairs500();
-                Tests::generatePairs1000();
+                cout << "generuojamos 100 000 poru\n";
+                Tests::makePairsFiles();
             }
         }
 

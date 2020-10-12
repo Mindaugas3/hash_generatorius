@@ -20,11 +20,9 @@ public:
     static void BinaryDifference(Converter conv1, Converter conv2);
     static void HexDifference(Converter conv1, Converter conv2);
     static void generateSymbols1000();
-    static void generatePairs10();
-    static void generatePairs100();
-    static void generatePairs500();
-    static void generatePairs1000();
+    static void generatePairs(ofstream& basicOfstream, int length);
     void checkCollission();
+    static void makePairsFiles();
 };
 
 

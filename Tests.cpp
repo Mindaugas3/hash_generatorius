@@ -7,6 +7,7 @@
 #include <sstream>
 #include <fstream>
 #include <ctime>
+#include <functional>
 #include "Tests.h"
 
 using namespace std;
@@ -53,7 +54,7 @@ void Tests::generateSymbols1000() {
 }
 
 void Tests::checkCollission() {
-    //TODO
+
 }
 
 void Tests::compareTwo(Converter conv1, Converter conv2) {
@@ -61,20 +62,28 @@ void Tests::compareTwo(Converter conv1, Converter conv2) {
     HexDifference(conv1, conv2);
 }
 
-void Tests::generatePairs10() {
-
+void Tests::generatePairs(ofstream& basicOfstream, int length) {
+    auto gen = std::bind(std::uniform_int_distribution<>(0,26),std::default_random_engine());
+    for(int j = 0; j < 25000; j++){
+        for(int i = 0; i < length; i++){
+            char randomChar = gen() + 'a';
+            if(i == length/2){
+                basicOfstream << ' ';
+            } else {
+                basicOfstream << randomChar;
+            }
+        }
+        basicOfstream << "\n";
+    }
 }
 
-void Tests::generatePairs100() {
-
-}
-
-void Tests::generatePairs500() {
-
-}
-
-void Tests::generatePairs1000() {
-
+void Tests::makePairsFiles() {
+    ofstream pairsFile("poros.txt");
+    generatePairs(pairsFile, 10);
+    generatePairs(pairsFile, 100);
+    generatePairs(pairsFile, 500);
+    generatePairs(pairsFile, 1000);
+    pairsFile.close();
 }
 
 
