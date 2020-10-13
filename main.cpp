@@ -69,6 +69,7 @@ int main(int argc, char **argv) {
             cout << "-generate, -g [Argumentas] : \t\t Generuoja reiksmes testavimui\n";
             cout << "\t Argumentas: 1000 : \t\t\t Generuoja faila su 1000 atsitiktiniu simboliu\n";
             cout << "\t Argumentas: pairs : \t\t\t Generuoja faila su 100000 atsitiktiniu simboliu poru\n";
+            cout << "-sha256 [Failo vardas] : \t\t Palygina failo hasavimo sparta naudojant mano algoritma, ir SHA256\n";
         }
     } else {
         readConsole();
@@ -142,10 +143,13 @@ void compareSha256(string filename){
     auto start = chrono::system_clock::now();
     Tests::MeasureSha256(io.getInput());
     auto end = chrono::system_clock::now();
+    std::chrono::duration<double> diff = end-start;
+    std::cout << "Laikas per kuri buvo suhasuotas failas naudojant SHA256 algoritma: "<< filename << " : " << diff.count() << " s\n";
     // mano algoritmas
     auto start2 = chrono::system_clock::now();
     Converter converter = Converter(io.getInput());
     auto end2 = chrono::system_clock::now();
+    std::chrono::duration<double> diff2 = end2-start2;
+    std::cout << "Laikas per kuri buvo suhasuotas failas naudojant mano algoritma: "<< filename << " : " << diff2.count() << " s\n";
 
-    
 }
