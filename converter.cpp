@@ -52,7 +52,7 @@ vector<byte> Converter::TrimAndFill(vector<byte> ivec){
                 //pildome
                 *X ^= bytesSum;
                 *forwardIterator ^= (*X >> 3u);
-                *forwardIterator += operations(*X, operations(*X, valuesList[valIndex]));
+                *forwardIterator += operations(*X, valIndex);
                 ++forwardIterator;
             } else {
                 //nukreipiame pointeri i pati pirma iteratoriu
@@ -67,8 +67,8 @@ vector<byte> Converter::TrimAndFill(vector<byte> ivec){
         for(auto B = r_vec.begin(); B < r_vec.end(); ++B){
             if(inputIterator < ivec.end()){
                 //sniego lavinos ciklas
-                *B += bytesSum;
-                *B += operations(*inputIterator, 3);
+                *B ^= bytesSum;
+                *B += operations(*inputIterator, valIndex);
                 *B <<= 3u;
                 *B ^= *inputIterator;
                 ++inputIterator;
@@ -88,11 +88,12 @@ byte Converter::operations(byte item, byte val){
     //AND, XOR, NOT,
     byte item_ = item;
     //1 etapas
-    item_ ^= val;
-    item_ *= 5;
-    item_ >>= 7u;
-    item_ += val;
-
+    item_ = rrot(item, val);
+    item_ ^= item;
+    //
+    item_ = rshift(item_, 5);
+    item_ |= flip(item);
+    item_ = lrot(item_, 3);
     return item_;
 }
 
