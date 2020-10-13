@@ -18,6 +18,7 @@ Paleidimo argumentai:
 (pvz.: start hash_generatorius.exe -collision poros.txt)
 6. -write, -w, (programa paleidziama be argumentu) - leidzia rasyti hashavima ranka.
 7. -generate, -g: - sugeneruoja testinius failus. 1000 - sugeneruoja faila su 1000 simboliu. pairs - sugeneruoja faila su 100000 poru 
+8. -sha256 [Failo vardas] - palygina mano algoritma su SHA256 algoritmu
 
 # Pseudokodas:
 
