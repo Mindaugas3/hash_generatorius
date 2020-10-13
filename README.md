@@ -118,5 +118,5 @@ Procesorius: AMD Ryzen 7 3700X
 
 ![](https://i.imgur.com/IwJd3dw.png)
 
-![](https://i.imgur.com/fRDWA5h.png)
+![](https://i.imgur.com/jKoyhUQ.png)
 
