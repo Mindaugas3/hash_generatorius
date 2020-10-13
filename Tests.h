@@ -22,6 +22,9 @@ public:
     static void generatePairs(ofstream& basicOfstream, int length);
     static void checkCollission(vector<string> allHashes);
     static void makePairsFiles();
+    static void MeasureSha256(string value);
+    static void generatePairsDiff();
+    static void checkDiff();
 };
 
 

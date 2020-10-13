@@ -3,4 +3,4 @@ project(hash_generatorius)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(hash_generatorius main.cpp converter.h IO.cpp IO.h converter.cpp Tests.h Tests.cpp)
+add_executable(hash_generatorius main.cpp converter.h IO.cpp IO.h converter.cpp Tests.h Tests.cpp sha256.cpp sha256.h)

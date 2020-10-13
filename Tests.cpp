@@ -9,6 +9,7 @@
 #include <ctime>
 #include <functional>
 #include "Tests.h"
+#include "sha256.h"
 
 using namespace std;
 
@@ -70,7 +71,7 @@ void Tests::compareTwo(Converter conv1, Converter conv2) {
 }
 
 void Tests::generatePairs(ofstream& basicOfstream, int length) {
-    auto gen = std::bind(std::uniform_int_distribution<>(0,26),std::default_random_engine());
+    auto gen = std::bind(std::uniform_int_distribution<>(0,26),std::default_random_engine(time(NULL)));
     for(int j = 0; j < 25000; j++){
         for(int i = 0; i < length; i++){
             char randomChar = gen() + 'a';
@@ -91,6 +92,18 @@ void Tests::makePairsFiles() {
     generatePairs(pairsFile, 500);
     generatePairs(pairsFile, 1000);
     pairsFile.close();
+}
+
+void Tests::MeasureSha256(string value) {
+    sha256(value);
+}
+
+void Tests::generatePairsDiff() {
+
+}
+
+void Tests::checkDiff() {
+
 }
 
 

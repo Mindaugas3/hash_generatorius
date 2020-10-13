@@ -11,6 +11,7 @@ void testForCollision(string filename);
 void readConsole();
 
 void compareTwo(string first, string second);
+void compareSha256(string filename);
 
 int main(int argc, char **argv) {
 
@@ -40,7 +41,13 @@ int main(int argc, char **argv) {
             } else if((string) argv[2] == "pairs"){
                 cout << "generuojamos 100 000 poru\n";
                 Tests::makePairsFiles();
+            } else if((string) argv[2] == "diff"){
+                cout << "generuojama 100 000 panasiu poru, kurios skiriasi tik vienu simboliu.\n";
+                //Tests::
             }
+        } else if((string) argv[1] == "-sha256"){
+            cout << "Palyginama hasavimo sparta su SHA256 algoritmu\n";
+            compareSha256(argv[2]);
         }
 
 
@@ -127,4 +134,18 @@ void compareTwo(string first, string second){
     cout << "=============================================================================" << endl;
     cout << second << endl;
     IO::Output(converter2.getOutput());
+}
+
+void compareSha256(string filename){
+    IO io = IO(filename);
+    // sha256
+    auto start = chrono::system_clock::now();
+    Tests::MeasureSha256(io.getInput());
+    auto end = chrono::system_clock::now();
+    // mano algoritmas
+    auto start2 = chrono::system_clock::now();
+    Converter converter = Converter(io.getInput());
+    auto end2 = chrono::system_clock::now();
+
+    
 }
