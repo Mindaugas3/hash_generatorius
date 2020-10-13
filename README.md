@@ -3,9 +3,21 @@
  
 # Patobulinimai:
 1. Atsikratyta dvigubo ciklo - konstitucija hašuojama žymiai greičiau (45 s -> 8 ms) 
+2. Sukurtos pagalbines komandos(argumentai)
+3. Patobulintas algoritmas, kad atsikratyti koliziju
  
 # Paleidimo instrukcijos:
-1. (Turintiems CLion) Edit Run/Debug configurations -> Edit Configurations -> Nurodyti argumentus(failų pavadinimus - iki 2 failų) eilutėje "Program arguments"
+1. (Turintiems CLion) Edit Run/Debug configurations -> Edit Configurations -> Nurodyti argumentus(komandas ir failų pavadinimus - iki 2 failų) eilutėje "Program arguments"
+Paleidimo argumentai:
+1. -help, -h, ? - pagalbos funkcija
+2. -file, -f  [Failo vardas] - vieno failo nuskaitymas ir suhasavimas.
+3. -timer, -t [Failo vardas] - vieno failo nuskaitymas ir suhasavimas. Hasas neisvedamas i ekrana, tik ismatuojamas hasavimo laikas.
+(pvz.: start hash_generatorius.exe -timer konstitucija.txt)
+4. -line, -l [Failo vardas] - nuskaito kiekviena eilute ir ja atskirai suhasuoja.
+5. -collision, -col [Failo vardas] - atlieka kolizijos testa su kiekviena failo eilute.
+(pvz.: start hash_generatorius.exe -collision poros.txt)
+6. -write, -w, (programa paleidziama be argumentu) - leidzia rasyti hashavima ranka.
+7. -generate, -g: - sugeneruoja testinius failus. 1000 - sugeneruoja faila su 1000 simboliu. pairs - sugeneruoja faila su 100000 poru 
 
 # Pseudokodas:
 
@@ -102,6 +114,9 @@ Procesorius: AMD Ryzen 7 3700X
 
 ![](https://i.imgur.com/OGXZLZ2.png)
 
-**Kolizijų testas**
+**Kolizijų testai**
 
 ![](https://i.imgur.com/IwJd3dw.png)
+
+![](https://i.imgur.com/jKoyhUQ.png)
+
