@@ -114,6 +114,9 @@ Procesorius: AMD Ryzen 7 3700X
 
 ![](https://i.imgur.com/OGXZLZ2.png)
 
-**Kolizijų testas**
+**Kolizijų testai**
 
 ![](https://i.imgur.com/IwJd3dw.png)
+
+![](https://i.imgur.com/fRDWA5h.png)
+
