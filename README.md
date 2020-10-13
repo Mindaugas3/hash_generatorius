@@ -120,3 +120,7 @@ Procesorius: AMD Ryzen 7 3700X
 
 ![](https://i.imgur.com/jKoyhUQ.png)
 
+**Palyginimas su SHA256 algoritmu**
+
+![](https://i.imgur.com/k268mVE.png)
+
