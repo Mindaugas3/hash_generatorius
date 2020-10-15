@@ -86,7 +86,7 @@ create bytevec (16) empty vector of bytes
 # Savybės:
  1. + Maišos funkcija generuoja vienodo dydžio bitų vektorius, kurie yra pilnai užpildomi nepriklausomai nuo įvesties dydžio. Vienodo dydžio bitų vektoriai, bet išvesties šešioliktainiu skaičiumi ilgis gali skirtis
  2. + Maišos funkcija nenaudoja random elementų - hash kodas priklauso tik nuo įvesties.(Deterministinė funkcija)
- 3. + Yra sniego lavinos efektas
+ 3. - Silpnas sniego lavinos efektas - jis yra bet skirtumai nera labai dideli
  4. + Algoritmas pakankamai atsparus kolizijoms
  5. + Greitai veikia
  5. - Outputo dydis gali skirtis
