@@ -17,8 +17,9 @@ Paleidimo argumentai:
 5. -collision, -col [Failo vardas] - atlieka kolizijos testa su kiekviena failo eilute.
 (pvz.: start hash_generatorius.exe -collision poros.txt)
 6. -write, -w, (programa paleidziama be argumentu) - leidzia rasyti hashavima ranka.
-7. -generate, -g: - sugeneruoja testinius failus. 1000 - sugeneruoja faila su 1000 simboliu. pairs - sugeneruoja faila su 100000 poru 
+7. -generate, -g: - sugeneruoja testinius failus. 1000 - sugeneruoja faila su 1000 simboliu. pairs - sugeneruoja faila su 100000 poru. diff - generuoja 100000 poru, kurios skiriasi tik vienu simboliu.
 8. -sha256 [Failo vardas] - palygina mano algoritma su SHA256 algoritmu
+9. -diff [Failo vardas] - palygina panasias poras ir % skirtinguma
 
 # Pseudokodas:
 
@@ -124,4 +125,7 @@ Procesorius: AMD Ryzen 7 3700X
 **Palyginimas su SHA256 algoritmu**
 
 ![](https://i.imgur.com/k268mVE.png)
+
+**Procentinis skirtingumas pakeitus 1 simbolį porose, 100 000 porų**
+![](https://i.imgur.com/6fMkN7n.png)
 
