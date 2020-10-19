@@ -16,15 +16,16 @@ private:
 
 public:
     static void compareTwo(Converter conv1, Converter conv2);
-    static void BinaryDifference(Converter conv1, Converter conv2);
-    static void HexDifference(Converter conv1, Converter conv2);
+    static float BinaryDifference(Converter conv1, Converter conv2);
+    static float HexDifference(Converter conv1, Converter conv2);
     static void generateSymbols1000();
     static void generatePairs(ofstream& basicOfstream, int length);
     static void checkCollission(vector<string> allHashes);
     static void makePairsFiles();
     static void MeasureSha256(string value);
     static void generatePairsDiff();
-    static void checkDiff();
+    static void makePairsSimiliar(ofstream& file, int length);
+    static void checkDiff(vector<pair<Converter, Converter>> allPairs);
 };
 
 

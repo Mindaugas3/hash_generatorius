@@ -1,5 +1,6 @@
 #include <iostream>
 #include <chrono>
+#include <sstream>
 #include "IO.h"
 #include "Tests.h"
 
@@ -7,6 +8,7 @@ void readFile(string filename);
 void readFileAndMeasureTime(string filename);
 void readFileByLine(string filename);
 void testForCollision(string filename);
+void measureHashDiffs(string filename);
 
 void readConsole();
 
@@ -26,6 +28,10 @@ int main(int argc, char **argv) {
 
             readFileAndMeasureTime(argv[2]);
 
+        } else if((string) argv[1] == "-diff"|| (string) argv[1] == "-d"){ //suhasuoja ir ismatuoja kiek uztruko
+
+            measureHashDiffs(argv[2]);
+
         } else if((string) argv[1] == "-line" || (string) argv[1] == "-l"){ //suhasuoja eilute po eilutes
 
             readFileByLine(argv[2]);
@@ -43,6 +49,7 @@ int main(int argc, char **argv) {
                 Tests::makePairsFiles();
             } else if((string) argv[2] == "diff"){
                 cout << "generuojama 100 000 panasiu poru, kurios skiriasi tik vienu simboliu.\n";
+                Tests::generatePairsDiff();
                 //Tests::
             }
         } else if((string) argv[1] == "-sha256"){
@@ -152,4 +159,36 @@ void compareSha256(string filename){
     std::chrono::duration<double> diff2 = end2-start2;
     std::cout << "Laikas per kuri buvo suhasuotas failas naudojant mano algoritma: "<< filename << " : " << diff2.count() << " s\n";
 
+}
+
+void measureHashDiffs(string filename){
+    vector<string> lines = IO::ReadFileWithLines(filename);
+    vector<pair<string, string>> pairs;
+
+    for(string line : lines){
+        //padalina per tarpus
+        stringstream iss(line);
+        string first, second;
+        iss >> first;
+        iss >> second;
+
+        //ideda i vektoriu
+        pair<string, string> _pair;
+        _pair.first = first;
+        _pair.second = second;
+        pairs.push_back(_pair);
+    }
+
+    vector<pair<Converter, Converter>> converters;
+
+    for(pair<string, string> strings : pairs){
+        //pavercia stringu pora i hashu pora
+        Converter conv1 = Converter(strings.first);
+        Converter conv2 = Converter(strings.second);
+
+        pair<Converter, Converter> convs(conv1, conv2);
+        converters.push_back(convs);
+    }
+
+    Tests::checkDiff(converters);
 }
